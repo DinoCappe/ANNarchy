@@ -97,3 +97,6 @@ Desktop.ini
 
 # Logs
 *.log
+
+# Project-specific
+*.hdf5
