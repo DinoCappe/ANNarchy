@@ -19,4 +19,11 @@ execute_process(
   OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE nanobind_ROOT)
 find_package(nanobind CONFIG REQUIRED)
 
+find_package(OpenMP)
+
 nanobind_add_module(ANNarchy ANNarchy.cpp)
+
+target_compile_options(ANNarchy PRIVATE -O3 -march=native)
+if(OpenMP_CXX_FOUND)
+  target_link_libraries(ANNarchy PRIVATE OpenMP::OpenMP_CXX)
+endif()
