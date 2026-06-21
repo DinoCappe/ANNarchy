@@ -7,8 +7,9 @@
 
 FROM ann-orthogonal/base:latest
 
-# Install cmake (base image already has build-essential)
+# Install cmake and C/C++ compilers
 RUN apt-get update && apt-get install -y --no-install-recommends cmake \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Install nanobind (needed to compile the C++ extension)
